@@ -1,6 +1,7 @@
 <?php include 'db.php'; ?>
-<?php
+<?php 
 session_start();
+include 'db.php'; 
 
 // Sınıfları dahil et
 require_once 'app/Controllers/Admin/DashboardController.php';
@@ -11,58 +12,71 @@ require_once 'app/Controllers/FrontendController.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Müşteri Önyüzü Rotaları
-if ($uri === '/' || $uri === '/index.php') {
-    (new App\Controllers\FrontendController())->index();
-} 
-
-elseif ($uri === '/randevu-al') {
+// --- AJAX VE ADMİN ROTALARI ---
+if ($uri === '/randevu-al') {
     (new App\Controllers\FrontendController())->store();
+    exit; // İşlem bitince durdur
 }
 elseif ($uri === '/admin/calendar/create') {
     (new App\Controllers\Admin\CalendarController())->createAppointment();
+    exit;
 }
 elseif ($uri === '/admin/settings/pending-requests') {
     (new App\Controllers\Admin\SettingsController())->getPendingRequests();
+    exit;
 }
 elseif ($uri === '/admin/settings/handle-request') {
     (new App\Controllers\Admin\SettingsController())->handleRequest();
+    exit;
 }
-// Admin Paneli Rotaları
 elseif ($uri === '/admin/dashboard') {
     (new App\Controllers\Admin\DashboardController())->index();
+    exit; // Admin sayfası yüklendi, HTML kısmına geçme!
 } 
 elseif ($uri === '/admin/dashboard/stats') {
     (new App\Controllers\Admin\DashboardController())->getStats();
+    exit;
 } 
 elseif ($uri === '/admin/calendar') {
     (new App\Controllers\Admin\CalendarController())->index();
+    exit;
 } 
 elseif ($uri === '/admin/calendar/status') {
     (new App\Controllers\Admin\CalendarController())->updateStatus();
+    exit;
 }
 elseif ($uri === '/admin/calendar/events') {
     (new App\Controllers\Admin\CalendarController())->getEvents();
+    exit;
 } 
 elseif ($uri === '/admin/customers') {
     (new App\Controllers\Admin\CustomerController())->index();
+    exit;
 } 
 elseif ($uri === '/admin/customers/payment') {
     (new App\Controllers\Admin\CustomerController())->payment();
+    exit;
 } 
 elseif ($uri === '/admin/settings') {
     (new App\Controllers\Admin\SettingsController())->index();
+    exit;
 } 
 elseif ($uri === '/admin/settings/save') {
     (new App\Controllers\Admin\SettingsController())->save();
+    exit;
 } 
-else {
+elseif ($uri !== '/' && $uri !== '/index.php') {
+    // Tanımsız bir sayfaysa 404 ver ve durdur
     http_response_code(404);
     echo "Sayfa bulunamadı.";
+    exit;
 }
+
+// EĞER KOD BURAYA KADAR GELDİYSE, DEMEK Kİ KULLANICI ANASAYFADA ("/" veya "/index.php")
+// Aşağıdaki HTML kodları sadece anasayfada çalışacak.
+?>
 <?php
 // --- VERİTABANI SORGULARI (TEK SEFERDE ÇEKİLİR) ---
-
 // 1. Kategoriler
 $kategoriler = $baglanti->query("SELECT * FROM kategoriler ORDER BY kategori_adi ASC")->fetchAll(PDO::FETCH_ASSOC);
 
