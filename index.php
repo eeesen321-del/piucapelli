@@ -1,4 +1,3 @@
-<?php include 'db.php'; ?>
 <?php 
 session_start();
 include 'db.php'; 
@@ -65,7 +64,7 @@ elseif ($uri === '/admin/settings/save') {
     (new App\Controllers\Admin\SettingsController())->save();
     exit;
 } 
-elseif ($uri !== '/' && $uri !== '/index.php') {
+elseif (!str_ends_with($uri, '/') && !str_ends_with($uri, 'index.php')) {
     // Tanımsız bir sayfaysa 404 ver ve durdur
     http_response_code(404);
     echo "Sayfa bulunamadı.";
