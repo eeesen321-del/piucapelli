@@ -11,8 +11,11 @@ class DashboardController {
         $this->db = new PDO("mysql:host=localhost;dbname=piucapelli_db;charset=utf8", "root", "");
     }
 
-    public function index() {
-        $content = file_get_contents(__DIR__ . '/../../../views/admin/dashboard.php');
+public function index() {
+        ob_start();
+        require_once __DIR__ . '/../../../views/admin/dashboard.php';
+        $content = ob_get_clean();
+        
         require_once __DIR__ . '/../../../views/admin/layout.php';
     }
 
