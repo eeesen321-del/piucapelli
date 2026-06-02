@@ -1,0 +1,643 @@
+html {
+    scroll-behavior: smooth;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+/* Navbar */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 10%; background: #fff; position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 28px; }
+.logo span { color: #d4a373; }
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 25px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 400; font-size: 14px; }
+.btn-randevu { background: #d4a373; color: #fff !important; padding: 10px 20px; border-radius: 50px; }
+
+/* Hero */
+/* Ana başlık beyaz kalsın */
+.hero h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 4rem; 
+    color: #ffffff; 
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Yazının okunması için gölge */
+}
+
+/* Sadece 'Güzelliğinizi' kelimesi altın sarısı olsun */
+.hero h1 span { 
+    color: #d4a373; /* Senin salonunun altın sarısı tonu */
+}
+.hero {
+    height: 100vh; /* Tam ekran boyu */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1350&q=80'); /* Buraya kendi resmini koyacaksın */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Hizmetler Bölümü */
+.services { padding: 80px 10%; background: #fdfaf7; text-align: center; }
+.section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px; }
+.section-title p { color: #888; margin-bottom: 40px; }
+
+/* Filtre Alanı */
+.filter-container { margin-bottom: 50px; }
+#hizmetAra { 
+    width: 100%; max-width: 500px; padding: 15px; border-radius: 50px;
+    border: 1px solid #ddd; margin-bottom: 20px; outline: none;
+}
+.filter-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.btn { 
+    padding: 8px 25px; border: 1px solid #d4a373; background: transparent; 
+    color: #d4a373; border-radius: 50px; cursor: pointer; transition: 0.3s;
+}
+.btn.active { background: #d4a373; color: #fff; }
+
+/* Kartlar */
+.service-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; 
+}
+.service-card { 
+    background: #fff; padding: 20px; border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; text-align: left;
+}
+.service-card:hover { transform: translateY(-10px); }
+.card-img { height: 200px; border-radius: 10px; margin-bottom: 15px; background-size: cover; background-position: center; }
+.service-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+.service-card p { font-size: 0.9rem; color: #777; margin-bottom: 15px; }
+.price { font-weight: bold; color: #d4a373; font-size: 1.1rem; }
+/* İletişim Bölümü */
+.contact-section { padding: 80px 10%; background: #fff; }
+.contact-container { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+.contact-info { flex: 1; min-width: 300px; text-align: left; }
+.contact-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
+.contact-info p { color: #666; margin-bottom: 30px; }
+
+.info-item { margin-bottom: 20px; }
+.info-item strong { display: block; color: #d4a373; font-size: 1.1rem; margin-bottom: 5px; }
+
+.contact-map { flex: 1; min-width: 300px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+/* Hakkımızda Bölümü */
+.about-section { padding: 100px 10%; background: #fff; }
+.about-container { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+.about-img { flex: 1; min-width: 300px; }
+.about-img img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px #fdfaf7; }
+.about-text { flex: 1; min-width: 300px; text-align: left; }
+.about-text span { color: #d4a373; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
+.about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin: 15px 0; }
+.about-text p { color: #666; margin-bottom: 20px; line-height: 1.8; }
+
+.about-stats { display: flex; gap: 30px; margin-top: 30px; }
+.stat-item strong { display: block; font-size: 1.5rem; color: #d4a373; font-family: 'Playfair Display', serif; }
+.stat-item span { font-size: 14px; color: #888; }
+
+/* Smooth Scroll (Yumuşak Kaydırma) Efekti */
+html { scroll-behavior: smooth; }
+
+/* Menüdeki Başlıkların Hover Efekti */
+.nav-links a:hover { color: #d4a373; transition: 0.3s; }
+/* Ürünler Bölümü Yeni Tasarım */
+.products-section { 
+    padding: 100px 10%; 
+    background: #fdfaf7; 
+}
+
+.products-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 60px; 
+    flex-wrap: wrap; 
+}
+
+.products-content { 
+    flex: 1; 
+    min-width: 350px; 
+    text-align: left; 
+}
+
+.products-content span { 
+    color: #d4a373; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 14px; 
+}
+
+.products-content h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 3rem; 
+    margin: 15px 0; 
+    color: #333;
+}
+
+.products-content p { 
+    color: #666; 
+    line-height: 1.8; 
+    margin-bottom: 20px; 
+    font-size: 1.1rem;
+}
+
+.products-content p span { 
+    color: #d4a373; 
+    font-weight: 600; 
+}
+
+.cta-button-gold {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #d4a373;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button-gold:hover { background: #b88a5d; transform: scale(1.05); }
+
+/* Sağ Taraf Görsel Alanı */
+.products-visual { 
+    flex: 1; 
+    min-width: 350px; 
+}
+
+.products-visual img { 
+    width: 100%; 
+    border-radius: 15px; 
+    box-shadow: -20px 20px 0px rgba(212, 163, 115, 0.1); /* Hafif altın gölge */
+    transition: 0.5s;
+}
+
+.products-visual img:hover { transform: scale(1.02); }
+
+/* Mobil Uyumluluk */
+@media (max-width: 992px) {
+    .products-container { flex-direction: column; text-align: center; }
+    .products-content { text-align: center; }
+}
+/* Mobil İyileştirmeleri */
+@media (max-width: 768px) {
+    /* Başlık boyutlarını küçültelim ki ekrana sığsın */
+    .hero h1 { font-size: 2.5rem; }
+    .section-title h2, .about-text h2, .products-content h2 { font-size: 2rem; }
+    
+    /* Hizmet kartlarının arasındaki boşluğu mobilde daraltalım */
+    .services { padding: 40px 5%; }
+    .service-grid { gap: 15px; }
+    
+    /* Navigasyon linklerini mobilde daha iyi hizalayalım */
+    .nav-links { gap: 10px; }
+    .nav-links li { margin-left: 10px; }
+    .nav-links a { font-size: 12px; }
+    
+    /* Hakkımızda resminin altındaki altın gölgeyi mobilde küçültelim */
+    .about-img img { box-shadow: 10px 10px 0px #fdfaf7; }
+}
+.accordion-content li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.accordion-content li:hover {
+    background: #fff;
+}
+
+.accordion-content li span:first-child {
+    font-weight: 400;
+    color: #444;
+}
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.accordion-header:hover { color: #d4a373; }
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fdfaf7;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.accordion-content li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ddd;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.accordion-content li span:last-child {
+    color: #d4a373;
+    font-weight: 600;
+}
+
+/* Aktif olduğunda ikonun dönmesi için */
+.accordion-item.active .icon { transform: rotate(45deg); color: #d4a373; }
+.accordion-item.active .accordion-content { max-height: 1000px; } /* İçeriğe göre ayarlanır */
+/* Select kutusunun içine tıklandığında açılan listenin 
+   bazı tarayıcılarda çok uzun olmasını engellemek için */
+#randevu_saati {
+    max-height: 200px; /* Modern tarayıcılar için yükseklik sınırı */
+}
+
+/* Randevu formundaki diğer inputlarla aynı görsel dile getiriyoruz */
+.randevu-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Padding'in genişliği bozmasını engeller */
+}
+/* Hizmet Kataloğu Modern Tasarım */
+.services { padding: 60px 20px; background: #fff; }
+
+.kategori-box {
+    max-width: 800px;
+    margin: 0 auto 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.kategori-baslik {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.kategori-baslik:hover {
+    background-color: #fdfaf7;
+    color: #d4a373;
+}
+
+.kategori-baslik .icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: #d4a373;
+}
+
+/* Açık durumdaki başlık stili */
+.kategori-box.active .kategori-baslik {
+    border-bottom: 1px solid #eee;
+    color: #d4a373;
+}
+
+.kategori-box.active .icon {
+    transform: rotate(45deg); /* + işaretini x yapar */
+}
+
+.hizmet-listesi {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    background: #fff;
+    padding: 0 20px;
+}
+
+.kategori-box.active .hizmet-listesi {
+    max-height: 1000px; /* İçerik kadar açılması için */
+    padding: 10px 20px 20px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.hizmet-satir {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.hizmet-satir:last-child { border-bottom: none; }
+
+.hizmet-satir span { color: #555; font-size: 0.95rem; }
+
+.hizmet-fiyat {
+    color: #d4a373;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+.hizmet-satir {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* Satır aralığını açtık */
+    border-bottom: 1px solid #f9f9f9; /* Daha ince, zarif bir çizgi */
+}
+
+.hizmet-ad {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Bir tık daha dolgun */
+    color: #444;
+    font-size: 1.05rem;
+}
+
+.hizmet-fiyat {
+    font-weight: 600;
+    color: #d4a373;
+    letter-spacing: 0.5px;
+}
+
+/* --- YAZDIRMA AYARLARI --- */
+@media print {
+    .sidebar, .topbar, .btn, .nav, .alert, .form-control, .form-select, #menuToggle { 
+        display: none !important; 
+    }
+    .main-content { 
+        margin-left: 0 !important; 
+        padding: 0 !important; 
+    }
+    .card-custom { 
+        box-shadow: none !important; 
+        border: none !important; 
+    }
+    body { 
+        background: white !important; 
+        color: black !important;
+    }
+    /* Tablonun tamamının görünmesi için */
+    .table-responsive { overflow: visible !important; }
+}
+/* --- MODERN TAKVİM TASARIMI --- */
+
+/* 1. Takvim Genel Yapısı */
+#calendar {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* 2. Gün Sütunları Başlıkları */
+.fc-col-header-cell {
+    background: #f8f9fa;
+    padding: 15px 0 !important;
+    border-bottom: 2px solid #eaecf0 !important;
+    color: #475467;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* 3. Gün Hücresi (Zemin) */
+.fc-daygrid-day-frame {
+    min-height: 180px !important; /* Hücre yüksekliği */
+    padding: 5px !important;      /* Kenarlardan boşluk */
+    background: #fff;
+}
+/* Bugünün rengini daha hafif yapalım (Sarı çok patlıyor) */
+.fc-day-today {
+    background-color: #fcfcfc !important;
+}
+
+/* 4. FullCalendar Varsayılan Event Çerçevesini Sıfırla */
+.fc-daygrid-event {
+    white-space: normal !important;
+    background: transparent !important;
+    border: none !important;
+    margin-bottom: 8px !important; /* Kutular arası boşluk */
+    cursor: pointer;
+    text-decoration: none !important;
+}
+/* Linklerin altı çizili olmasın */
+.fc-daygrid-event:hover {
+    text-decoration: none !important; 
+}
+
+/* 5. BİZİM ÖZEL KUTUMUZUN TASARIMI */
+.randevu-kutu {
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffffff !important; /* Yazılar kesinlikle beyaz */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.2s ease;
+    border-left: 5px solid rgba(0,0,0,0.15); /* Sol tarafa hafif bir şerit */
+}
+
+.randevu-kutu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    filter: brightness(1.05);
+}
+
+/* 6. Kutu İçi Metinler */
+.r-saat {
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 2px;
+    opacity: 0.95;
+}
+.r-musteri {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.r-personel {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.9;
+    font-style: italic;
+}
+.r-hizmet {
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(255,255,255,0.2); /* Hizmet arkasına silik beyaz bant */
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    align-self: flex-start;
+}
+/* --- WIZARD (ADIM ADIM RANDEVU) STİLLERİ --- */
+.wizard-wrapper {
+    max-width: 800px; margin: 0 auto; background: #fff;
+    border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden;
+}
+/* İlerleme Çubuğu */
+.step-progress {
+    display: flex; justify-content: space-between; padding: 20px 40px;
+    background: #fdfaf7; border-bottom: 1px solid #eee;
+}
+.step-item {
+    position: relative; display: flex; flex-direction: column; align-items: center;
+    color: #ccc; font-weight: 600; font-size: 13px; z-index: 1;
+}
+.step-item.active { color: #d4a373; }
+.step-circle {
+    width: 35px; height: 35px; background: #fff; border: 2px solid #ccc;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 5px; transition: 0.3s;
+}
+.step-item.active .step-circle { border-color: #d4a373; background: #d4a373; color: #fff; }
+
+/* Adım İçerikleri */
+.step-content { display: none; padding: 30px; animation: fadeIn 0.5s; }
+.step-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Seçim Kartları (Hizmet ve Personel) */
+.selection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+.select-card {
+    border: 1px solid #eee; border-radius: 10px; padding: 15px; text-align: center;
+    cursor: pointer; transition: 0.2s; background: #fff;
+}
+.select-card:hover { border-color: #d4a373; box-shadow: 0 5px 15px rgba(212, 163, 115, 0.15); }
+.select-card.selected { background: #d4a373; color: #fff; border-color: #d4a373; }
+.select-card h4 { font-size: 14px; margin-bottom: 5px; }
+.select-card span { font-size: 12px; opacity: 0.8; }
+
+/* Saat Kutuları */
+.time-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-top: 15px; }
+.time-slot {
+    padding: 8px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px;
+    text-align: center; cursor: pointer; font-size: 13px;
+}
+.time-slot:hover:not(.disabled) { background: #eee; }
+.time-slot.selected { background: #d4a373; color: white; border-color: #d4a373; }
+.time-slot.disabled { background: #e9ecef; color: #adb5bd; cursor: not-allowed; text-decoration: line-through; }
+
+/* Navigasyon Butonları */
+.wizard-footer {
+    padding: 20px 30px; border-top: 1px solid #eee; display: flex; justify-content: space-between;
+}
+.btn-nav {
+    padding: 10px 25px; border-radius: 30px; border: none; cursor: pointer; font-weight: 600;
+}
+.btn-prev { background: #e9ecef; color: #333; }
+.btn-next { background: #d4a373; color: #fff; }
+.btn-nav:disabled { opacity: 0.5; cursor: not-allowed; }
+/* --- MODERN INPUT VE TARİH TASARIMI --- */
+
+/* Genel Input Stili (Tarih ve Metin Kutuları) */
+.wizard-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fcfcfc;
+    border: 2px solid #eef0f3;
+    border-radius: 12px; /* Köşeleri yumuşat */
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.01); /* Çok hafif gölge */
+}
+
+/* Tıklanınca (Focus) Efekti */
+.wizard-input:focus {
+    border-color: #d4a373; /* Altın rengi çerçeve */
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.15); /* Altın gölge */
+}
+
+/* Tarih Seçiciye Özel İkon Ayarı */
+input[type="date"].wizard-input {
+    position: relative;
+    color: #555;
+    font-weight: 500;
+}
+/* Tarih ikonunu biraz büyütüp güzelleştirelim (Webkit tarayıcılar için) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* Etiketler (Label) */
+.wizard-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* Saat kutularını 5 dk olacağı için biraz küçültelim ve sıkıştıralım */
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); /* Daha kompakt */
+    gap: 8px;
+    max-height: 300px; /* Çok uzarsa kaydırma çubuğu çıksın */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+.time-slot {
+    font-size: 12px;
+    padding: 6px;
+}
+/* --- MODERN TAKVİM (FLATPICKR) ÖZELLEŞTİRME --- */
+.flatpickr-calendar.inline {
+    margin: 0 auto 20px auto; /* Ortala ve alta boşluk bırak */
+    box-shadow: none; /* Varsayılan gölgeyi kaldır */
+    border: 1px solid #eee; /* Hafif çerçeve */
+}
+
+/* Seçilen günün rengi (Sitenin altın rengi) */
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
+    background: #d4a373 !important;
+    border-color: #d4a373 !important;
+}
+
+/* Bugünün tarihi */
+.flatpickr-day.today { border-color: #d4a373; }
+.flatpickr-day.today:hover { background: #eee; color: inherit; }
