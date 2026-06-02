@@ -1,0 +1,98 @@
+/* =========================================
+   KÖK DEĞİŞKENLER (KESİN RENK KURALLARI)
+========================================= */
+:root {
+    --customer-debt: #e74c3c;   /* Kırmızı - Borçlu */
+    --customer-clean: #27ae60;  /* Yeşil - Temiz */
+    --status-bekliyor: #f39c12; /* Turuncu - Bekliyor */
+    --status-geldi: #2ecc71;    /* Yeşil - Geldi/Tamamlandı */
+    --status-gelmedi: #2c3e50;  /* Siyah/Koyu Lacivert - Gelmedi */
+    --status-iptal: #bdc3c7;    /* Gri - İptal */
+}
+
+/* =========================================
+   MÜŞTERİ LİSTESİ RENKLENDİRMELERİ
+========================================= */
+.musteri-adi.borclu {
+    color: var(--customer-debt);
+    font-weight: bold;
+}
+
+.musteri-adi.temiz {
+    color: var(--customer-clean);
+    font-weight: bold;
+}
+
+/* =========================================
+   TAKVİM ETKİNLİK (EVENT) DURUM SINIFLARI
+========================================= */
+.event-bekliyor {
+    border-left: 4px solid var(--status-bekliyor) !important;
+}
+
+.event-geldi {
+    border-left: 4px solid var(--status-geldi) !important;
+}
+
+.event-gelmedi {
+    background-color: var(--status-gelmedi) !important;
+    color: #fff !important;
+    text-decoration: line-through;
+}
+
+.event-iptal {
+    background-color: var(--status-iptal) !important;
+    text-decoration: line-through;
+}
+
+/* =========================================
+   TEMEL SAYFA VE SİDEBAR DÜZENİ
+========================================= */
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #e0e0e0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background-color: #f0f2f5;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 250px; /* Sidebar genişliği kadar boşluk */
+}
