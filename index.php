@@ -1,5 +1,66 @@
 <?php include 'db.php'; ?>
 <?php
+session_start();
+
+// Sınıfları dahil et
+require_once 'app/Controllers/Admin/DashboardController.php';
+require_once 'app/Controllers/Admin/CalendarController.php';
+require_once 'app/Controllers/Admin/CustomerController.php';
+require_once 'app/Controllers/Admin/SettingsController.php';
+require_once 'app/Controllers/FrontendController.php';
+
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Müşteri Önyüzü Rotaları
+if ($uri === '/' || $uri === '/index.php') {
+    (new App\Controllers\FrontendController())->index();
+} 
+
+elseif ($uri === '/randevu-al') {
+    (new App\Controllers\FrontendController())->store();
+}
+elseif ($uri === '/admin/calendar/create') {
+    (new App\Controllers\Admin\CalendarController())->createAppointment();
+}
+elseif ($uri === '/admin/settings/pending-requests') {
+    (new App\Controllers\Admin\SettingsController())->getPendingRequests();
+}
+elseif ($uri === '/admin/settings/handle-request') {
+    (new App\Controllers\Admin\SettingsController())->handleRequest();
+}
+// Admin Paneli Rotaları
+elseif ($uri === '/admin/dashboard') {
+    (new App\Controllers\Admin\DashboardController())->index();
+} 
+elseif ($uri === '/admin/dashboard/stats') {
+    (new App\Controllers\Admin\DashboardController())->getStats();
+} 
+elseif ($uri === '/admin/calendar') {
+    (new App\Controllers\Admin\CalendarController())->index();
+} 
+elseif ($uri === '/admin/calendar/status') {
+    (new App\Controllers\Admin\CalendarController())->updateStatus();
+}
+elseif ($uri === '/admin/calendar/events') {
+    (new App\Controllers\Admin\CalendarController())->getEvents();
+} 
+elseif ($uri === '/admin/customers') {
+    (new App\Controllers\Admin\CustomerController())->index();
+} 
+elseif ($uri === '/admin/customers/payment') {
+    (new App\Controllers\Admin\CustomerController())->payment();
+} 
+elseif ($uri === '/admin/settings') {
+    (new App\Controllers\Admin\SettingsController())->index();
+} 
+elseif ($uri === '/admin/settings/save') {
+    (new App\Controllers\Admin\SettingsController())->save();
+} 
+else {
+    http_response_code(404);
+    echo "Sayfa bulunamadı.";
+}
+<?php
 // --- VERİTABANI SORGULARI (TEK SEFERDE ÇEKİLİR) ---
 
 // 1. Kategoriler
